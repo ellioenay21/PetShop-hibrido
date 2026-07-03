@@ -387,7 +387,7 @@ Este projeto foi desenvolvido para consolidar conhecimentos em desenvolvimento c
 
 # 👨‍💻 Autor
 
-**Ellio Enay**
+**Ellioenay**
 
 GitHub: https://github.com/ellioenay21
 
