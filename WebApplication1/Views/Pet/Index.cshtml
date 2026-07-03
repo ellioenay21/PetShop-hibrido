@@ -1,0 +1,43 @@
+@model List<WebApplication1.Models.Pet>
+
+<h2>Pets</h2>
+
+<a class="btn btn-primary" href="/Pet/Create">New Pet</a>
+
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Species</th>
+            <th>Breed</th>
+            <th>Client</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Nome</td>
+            <td>@item.Especie</td>
+            <td>@item.Raca</td>
+            <td>@item.Cliente?.Nome</td>
+            <td>@(item.Ativo ? "Active" : "Inactive")</td>
+            <td>
+                <a href="/Pet/Edit/@item.Id" class="btn btn-warning btn-sm">Edit</a>
+
+                @if (item.Ativo)
+                {
+                    <a href="/Pet/Deactivate/@item.Id" class="btn btn-danger btn-sm">Deactivate</a>
+                }
+                else
+                {
+                    <a href="/Pet/Activate/@item.Id" class="btn btn-success btn-sm">Activate</a>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,103 @@
+@model WebApplication1.Models.Cliente
+
+<h2>@Model.Nome</h2>
+
+<p><strong>CPF:</strong> @Model.CPF</p>
+<p><strong>Telefone:</strong> @Model.Telefone</p>
+
+<p>
+@if (Model.Ativo)
+{
+    <span class="badge bg-success">Ativo</span>
+}
+else
+{
+    <span class="badge bg-danger">Inativo</span>
+}
+</p>
+
+<div class="mt-3">
+
+    @if (Model.Ativo)
+    {
+        <a class="btn btn-warning"
+           asp-action="Inativar"
+           asp-route-id="@Model.Id">
+            Inativar Cliente
+        </a>
+    }
+    else
+    {
+        <a class="btn btn-success"
+           asp-action="Ativar"
+           asp-route-id="@Model.Id">
+            Ativar Cliente
+        </a>
+    }
+
+    <a class="btn btn-danger"
+       asp-action="Delete"
+       asp-route-id="@Model.Id">
+        Excluir Cliente
+    </a>
+
+</div>
+
+<hr />
+
+<h4>Pets</h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Espécie</th>
+            <th>Raça</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var pet in Model.Pets)
+    {
+        <tr>
+            <td>@pet.Nome</td>
+            <td>@pet.Especie</td>
+            <td>@pet.Raca</td>
+            <td>
+                @if (pet.Ativo)
+                {
+                    <span class="badge bg-success">Ativo</span>
+                }
+                else
+                {
+                    <span class="badge bg-danger">Inativo</span>
+                }
+            </td>
+            <td>
+
+                @if (pet.Ativo)
+                {
+                    <a class="btn btn-sm btn-warning"
+                       asp-controller="Pet"
+                       asp-action="Deactivate"
+                       asp-route-id="@pet.Id">
+                        Inativar
+                    </a>
+                }
+                else
+                {
+                    <a class="btn btn-sm btn-success"
+                       asp-controller="Pet"
+                       asp-action="Activate"
+                       asp-route-id="@pet.Id">
+                        Ativar
+                    </a>
+                }
+
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

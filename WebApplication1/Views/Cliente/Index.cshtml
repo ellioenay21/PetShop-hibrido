@@ -1,0 +1,68 @@
+@model List<WebApplication1.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Clientes</h2>
+    <a class="btn btn-primary" asp-action="Create">+ Novo Cliente</a>
+</div>
+
+<!-- 🔎 SEARCH -->
+<form method="get" asp-action="Index" class="mb-3">
+    <div class="input-group">
+        <input type="text"
+               name="search"
+               class="form-control"
+               placeholder="Buscar por nome ou CPF..." />
+
+        <button class="btn btn-primary" type="submit">
+            Buscar
+        </button>
+
+        <a class="btn btn-secondary" asp-action="Index">
+            Limpar
+        </a>
+    </div>
+</form>
+
+<div class="card card-custom p-3">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nome</td>
+                <td>@item.CPF</td>
+                <td>@item.Telefone</td>
+
+                <td>
+                    @if (item.Ativo)
+                    {
+                        <span class="badge bg-success">Ativo</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Inativo</span>
+                    }
+                </td>
+
+                <td>
+                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

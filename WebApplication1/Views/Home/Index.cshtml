@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center mt-5">
+
+    <h1>🐶 PetShop System</h1>
+    <p class="text-muted">Gestão de Clientes e Pets</p>
+
+    <div class="mt-4">
+
+        <a class="btn btn-primary me-2"
+           asp-controller="Cliente"
+           asp-action="Index">
+            👤 Ir para Clientes
+        </a>
+
+        <a class="btn btn-dark"
+           asp-controller="Pet"
+           asp-action="Index">
+            🐾 Ir para Pets
+        </a>
+
+    </div>
+
+</div>

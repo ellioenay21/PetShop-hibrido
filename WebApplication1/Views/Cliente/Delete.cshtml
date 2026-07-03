@@ -1,0 +1,32 @@
+@model WebApplication1.Models.Cliente
+
+<h2>Excluir Cliente</h2>
+
+<div class="alert alert-danger">
+
+    <h4>Tem certeza que deseja excluir?</h4>
+
+    <p><strong>Nome:</strong> @Model.Nome</p>
+    <p><strong>CPF:</strong> @Model.CPF</p>
+
+    <hr />
+
+    <p><strong>Atenção:</strong> todos os pets vinculados serão removidos.</p>
+
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+
+    <input type="hidden" name="id" value="@Model.Id" />
+
+    <button type="submit" class="btn btn-danger">
+        Sim, excluir
+    </button>
+
+    <a asp-action="Details"
+       asp-route-id="@Model.Id"
+       class="btn btn-secondary">
+        Cancelar
+    </a>
+
+</form>
